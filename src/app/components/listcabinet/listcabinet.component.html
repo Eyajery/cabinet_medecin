@@ -1,0 +1,59 @@
+<h1>Liste des patients</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <input type="text" [(ngModel)]="filters.keyword" name="key" (input)="ListCabinet()" class="form-control" placeholder="Rechercher...">
+    </div>
+    <div class="col-md-4">
+        <select name="sortBy" [(ngModel)]="filters.sortBy" class="form-control custom-select">
+            <option value="name">Nom</option>
+            <option value="firstName">Prénom</option>
+            <option value="age">Age</option>
+        </select>
+    </div>
+    
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-md-12">
+      
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+           
+            <th>Prénom</th>
+            <th>Âge </th>
+            <th>Num tel</th>
+            <th>Date de consultation</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cabinet of cabinets">
+                <td>{{ cabinet.id }}</td>
+                <td>{{ cabinet.name }}</td>
+                <td>{{ cabinet.firstName }}</td>
+                <td>{{ cabinet.age }}</td>
+                <td> <a href="tel:{{ cabinet.numtel }}">
+                    <i class="fas fa-phone"></i>
+                    {{ cabinet.numtel }}
+                  </a></td>
+                <td>{{ cabinet.consultationDate }}</td>
+                <td>
+                  <a routerLink="/editcabinet/{{ cabinet.id }}" class="btn btn-sm btn-warning mr-2">Modifier</a>
+                  <button class="btn btn-sm btn-danger" (click)="deleteCabinet(cabinet.id)">Supprimer</button>
+                </td>
+              </tr>
+             
+              
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  
