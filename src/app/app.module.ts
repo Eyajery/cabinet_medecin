@@ -7,19 +7,26 @@ import { ListcabinetComponent } from './components/listcabinet/listcabinet.compo
 import { AddcabinetComponent } from './components/addcabinet/addcabinet.component';
 import {RouterModule,Routes} from "@angular/router";
 import{ FormsModule } from "@angular/forms";
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { RegisterComponent } from './components/register/register.component';
+
 const routers : Routes =[
 {path:'cabinets', component: ListcabinetComponent},
 {path:'addcabinet', component: AddcabinetComponent},
 {path:'editcabinet/:id', component: AddcabinetComponent},
-{path:'', redirectTo: '/cabinets',pathMatch:'full'},
-
+{path:'', redirectTo: '/user',pathMatch:'full'},
+{path:'user', component: UserLoginComponent},
+{path:'register', component: RegisterComponent},
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ListcabinetComponent,
-    AddcabinetComponent
+    AddcabinetComponent,
+    UserLoginComponent,
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
